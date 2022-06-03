@@ -2,6 +2,7 @@ package scaleway
 
 import (
 	"context"
+	"log"
 	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
@@ -194,7 +195,8 @@ func resourceScalewayInstancePrivateNICDelete(ctx context.Context, d *schema.Res
 
 	// Wait for the NIC to be deleted from virtual machine
 	// Checkout CP-6367
-	time.Sleep(10 * time.Second)
+	log.Println("Sleep")
+	time.Sleep(30 * time.Second)
 
 	if err != nil && !is404Error(err) {
 		return diag.FromErr(err)
